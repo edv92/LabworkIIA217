@@ -1,0 +1,26 @@
+IF EXISTS (SELECT name
+	FROM sysobjects
+	WHERE name = 'ShowSensorData'
+	AND type = 'V')
+	DROP VIEW ShowSensorData
+GO
+
+
+CREATE VIEW ShowSensorData
+AS
+
+SELECT
+SENSOR.SensorId,
+SENSOR.SensorName,
+TEMPERATURE_DATA.SampleId,
+TEMPERATURE_DATA.Setpoint,
+TEMPERATURE_DATA.CelciusData,
+TEMPERATURE_DATA.FahrenheitData,
+TEMPERATURE_DATA.DateTime
+
+FROM TEMPERATURE_DATA
+INNER JOIN SENSOR ON TEMPERATURE_DATA.SensorId = SENSOR.SensorId
+
+
+
+GO

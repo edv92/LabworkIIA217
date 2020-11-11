@@ -1,0 +1,1 @@
+select name, type_desc from SENSORDATA.sys.objects
